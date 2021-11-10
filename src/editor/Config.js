@@ -40,8 +40,8 @@ const EditorConfiguration = {
 			'insertTable',
 			'|',
 			'specialCharacters',
-			'MathType',
-			'ChemType',
+			// 'MathType',
+			// 'ChemType',
 			'mshape'
 		],
 		shouldNotGroupWhenFull: true,

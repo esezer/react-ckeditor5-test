@@ -48,11 +48,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 function EditorDialog(props) {
   const {
     article,
-    onSetArticle,
+    onHandleArticle,
     open,
     onSetOpen,
-    onDuration,
-    onSetDuration,
+    onHandleOpenEnd,
+    onHandleCloseStart,
   } = props;
   const classes = useStyles();
   // const { imageChanges } = useSelector(({ adminApp }) => adminApp.blog);
@@ -64,12 +64,8 @@ function EditorDialog(props) {
     function handleSetContent() {
       setContent(article);
       const d = new Date().getTime();
-      onSetDuration({
-        openStart: onDuration.openStart,
-        openEnd: d,
-        closeStart: onDuration.closeStart,
-        closeEnd: onDuration.closeEnd,
-      });
+      onHandleOpenEnd(d);
+      setTimeout(() => handleConfirm(), 2000);
     }
     if (editor && article) handleSetContent();
   }, [editor, article]);
@@ -138,13 +134,8 @@ function EditorDialog(props) {
     // );
 
     const d = new Date().getTime();
-    onSetDuration({
-      openStart: onDuration.openStart,
-      openEnd: onDuration.openEnd,
-      closeStart: d,
-      closeEnd: onDuration.closeEnd
-    });
-    onSetArticle(editor.getData());
+    onHandleCloseStart(d);
+    onHandleArticle(editor.getData());
     closeDialog();
   }
 

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "merloncomtr"
+  },
+  "targets": {
+    "merloncomtr": {
+      "hosting": {
+        "test": [
+          "merlon-test"
+        ]
+      }
+    }
+  }
+}
